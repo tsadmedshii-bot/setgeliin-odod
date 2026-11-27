@@ -279,23 +279,10 @@ main {
 .hero-art {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.hero-tree {
-  width: 240px;
-  height: 240px;
-}
-
-.hero-mascot {
-  width: 96px;
-  height: 96px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
 
 .hero-title {
@@ -329,14 +316,53 @@ main {
   border-radius: 999px;
 }
 
-/* ---------- Хэрхэн ажилладаг вэ — тойрог (Orbital) ---------- */
-.orbital-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+/* ---------- Хэрхэн ажилладаг вэ ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
+.step {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--purple-deep);
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.step h3 {
+  margin: 0 0 6px;
+  color: var(--purple-deep);
+  font-size: 1.1rem;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.step .price-tag {
+  color: var(--pink-deep);
+  font-weight: 700;
+}
+
+/* ---------- Тойрог цэс (Orbital) ---------- */
 .orbital {
   position: relative;
   width: min(100%, 420px);
@@ -410,13 +436,6 @@ main {
   transform: translate(-50%, -50%) scale(1.08);
 }
 
-.orbital-node.active {
-  background: linear-gradient(135deg, var(--purple-soft), var(--purple));
-  color: var(--white);
-  border-color: var(--purple-deep);
-  box-shadow: 0 0 0 5px rgba(91, 58, 158, 0.18), 0 8px 20px rgba(59, 31, 110, 0.35);
-}
-
 .orbital-node-label {
   position: absolute;
   left: 50%;
@@ -432,78 +451,7 @@ main {
   border: 1px solid var(--line);
 }
 
-.orbital-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px 22px;
-  max-width: 560px;
-  width: 100%;
-  text-align: center;
-  min-width: 0;
-}
 
-.orbital-card h3 {
-  margin: 0 0 6px;
-  color: var(--purple-deep);
-  font-size: 1.15rem;
-}
-
-.orbital-card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.orbital-card .price-tag {
-  color: var(--pink-deep);
-  font-weight: 700;
-}
-
-.orbital-nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.orbital-arrow {
-  background: var(--lavender);
-  border: 1.5px solid var(--line);
-  color: var(--purple);
-  border-radius: 999px;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
-  font-weight: 800;
-  line-height: 1;
-  padding: 0;
-}
-
-.orbital-arrow:hover {
-  background: #e2d6f8;
-}
-
-.orbital-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.orbital-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: #d5c8f0;
-  padding: 0;
-}
-
-.orbital-dot.active {
-  background: var(--gold);
-  box-shadow: 0 0 0 3px rgba(246, 196, 83, 0.35);
-}
 
 /* ---------- Тестийн карт ---------- */
 .test-grid {
@@ -1269,6 +1217,10 @@ td .actions {
     height: 80px;
   }
 
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .benefits {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1293,10 +1245,6 @@ td .actions {
     justify-content: flex-start;
   }
 
-  .hero-tree {
-    width: 280px;
-    height: 280px;
-  }
 }
 
 @media (min-width: 960px) {
