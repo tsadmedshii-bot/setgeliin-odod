@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import type { TestSummary, User } from '../../../shared/src/types';
 import TreeOfLife from '../components/TreeOfLife';
 import Mascot from '../components/Mascot';
@@ -9,8 +11,43 @@ interface HomeProps {
   onAuth: () => void;
 }
 
+// Тойрог алхмууд: голд нь од, тойронд нь 4 алхам (цагийн зүүний дагуу).
+const STEPS: { title: string; desc: ReactNode; left: string; top: string }[] = [
+  {
+    title: 'Бүртгүүлэх',
+    desc: 'Нэр, хэрэглэгчийн нэр, нууц үгээрээ бүртгүүлж нэвтэрнэ үү.',
+    left: '50%',
+    top: '12%',
+  },
+  {
+    title: 'Төлбөр төлөх',
+    desc: (
+      <>
+        Нэг тест <span className="price-tag">6,500₮</span> — QPay QR кодоор төлнө.
+      </>
+    ),
+    left: '88%',
+    top: '50%',
+  },
+  {
+    title: 'Тест өгөх',
+    desc: 'Асуултуудад хариулна. Хариулт бүрийн дараа дараагийн асуулт гарч ирнэ.',
+    left: '50%',
+    top: '88%',
+  },
+  {
+    title: 'Үр дүн харах',
+    desc: 'Үр дүнгээ шууд харж, «Миний үр дүн» хэсэгт хадгална.',
+    left: '12%',
+    top: '50%',
+  },
+];
+
 export default function Home({ tests, user, onStart, onAuth }: HomeProps) {
   const visible = tests.filter((t) => t.published);
+  const [active, setActive] = useState(0);
+  const prev = () => setActive((active + STEPS.length - 1) % STEPS.length);
+  const next = () => setActive((active + 1) % STEPS.length);
 
   return (
     <div>
@@ -90,23 +127,62 @@ export default function Home({ tests, user, onStart, onAuth }: HomeProps) {
 
       <section className="section container" id="how">
         <h2 className="section-title">Хэрхэн ажилладаг вэ?</h2>
-        <div className="steps">
-          <div className="step">
-            <div className="step-num">1</div>
-            <h3>Бүртгүүлэх</h3>
-            <p>Нэр, хэрэглэгчийн нэр, нууц үгээрээ бүртгүүлж нэвтэрнэ үү.</p>
+        <p className="section-sub">Алхам дээр нь дарж, дэлгэрэнгүйг нь хараарай.</p>
+        <div className="orbital-wrap">
+          <div className="orbital" role="group" aria-label="Хэрхэн ажилладаг вэ">
+            <div className="orbital-ring" aria-hidden="true" />
+            <div className="orbital-hub" aria-hidden="true">
+              <Mascot className="orbital-mascot" />
+            </div>
+            {STEPS.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                className={`orbital-node${i === active ? ' active' : ''}`}
+                style={{ left: s.left, top: s.top }}
+                onClick={() => setActive(i)}
+                aria-label={`Алхам ${i + 1}: ${s.title}`}
+                aria-pressed={i === active}
+              >
+                {i + 1}
+                <span className="orbital-node-label">{s.title}</span>
+              </button>
+            ))}
           </div>
-          <div className="step">
-            <div className="step-num">2</div>
-            <h3>Төлбөр төлөх</h3>
-            <p>
-              Нэг тест <span className="price-tag">6,500₮</span> — QPay QR кодоор төлнө.
-            </p>
-          </div>
-          <div className="step">
-            <div className="step-num">3</div>
-            <h3>Тест өгч үр дүнгээ шууд харах</h3>
-            <p>Асуултуудад хариулж, үр дүнгээ шууд харж, хадгална.</p>
+          <div className="orbital-card">
+            <h3>
+              {active + 1}. {STEPS[active].title}
+            </h3>
+            <p>{STEPS[active].desc}</p>
+            <div className="orbital-nav">
+              <button
+                type="button"
+                className="orbital-arrow"
+                onClick={prev}
+                aria-label="Өмнөх алхам"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="orbital-arrow"
+                onClick={next}
+                aria-label="Дараах алхам"
+              >
+                ›
+              </button>
+            </div>
+            <div className="orbital-dots">
+              {STEPS.map((s, i) => (
+                <button
+                  key={s.title}
+                  type="button"
+                  className={`orbital-dot${i === active ? ' active' : ''}`}
+                  onClick={() => setActive(i)}
+                  aria-label={`Алхам ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
