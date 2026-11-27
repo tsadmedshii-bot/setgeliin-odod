@@ -12,7 +12,9 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/drizzle ./drizzle
+# migrate.ts (dist/server/src/migrate.js) нь шилжилтийг dist/drizzle-ээс уншдаг
+# (__dirname-ээс хоёр түвшин дээш), тиймээс drizzle-ийг dist дотор хуулна.
+COPY --from=build /app/drizzle ./dist/drizzle
 # Ажиллуулахын өмнө DATABASE_URL болон SESSION_SECRET орчны хувьсагчаа тохируулна.
 # Шилжилт: docker run ... node dist/server/src/migrate.js  (эсвэл npm run db:migrate)
 EXPOSE 3001
