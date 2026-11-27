@@ -1,0 +1,1 @@
+{"compilerOptions":{"declaration":false,"module":"commonjs","moduleResolution":"node","outDir":"dist","rootDir":".","sourceMap":false},"exclude":["node_modules","dist","client"],"extends":"./tsconfig.json","include":["server/src/**/*","shared/src/**/*"]}
