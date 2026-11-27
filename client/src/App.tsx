@@ -131,7 +131,16 @@ export default function App() {
       </header>
 
       <main>
-        {view === 'home' && <Home tests={tests} user={user} onStart={startTest} onAuth={() => setView('auth')} />}
+        {view === 'home' && (
+          <Home
+            tests={tests}
+            user={user}
+            onStart={startTest}
+            onAuth={() => setView('auth')}
+            onResults={() => setView('results')}
+            onAdmin={() => setView('admin')}
+          />
+        )}
         {view === 'auth' && <Auth onDone={handleAuthDone} />}
         {view === 'test' && selectedTestId !== null && (
           <TestFlow testId={selectedTestId} onDone={() => setView('results')} onBack={goHome} />
