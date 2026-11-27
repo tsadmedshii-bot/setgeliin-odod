@@ -78,7 +78,11 @@ main {
 }
 
 .section {
-  margin: 40px 0;
+  /* Зөвхөн босоо зай: хэвтээ margin-ийг .container-ийн `margin: 0 auto`
+     (голлуулах) хэвээр нь үлдээнэ. `margin: 40px 0` гэж бичвэл энэ нь
+     .container-ийг дарж, өргөн дэлгэц дээр хэсгүүд зүүн тийшээ наалддаг. */
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .section-title {
