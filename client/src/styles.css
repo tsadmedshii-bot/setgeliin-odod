@@ -370,12 +370,18 @@ main {
   margin: 8px auto 28px;
 }
 
+/* Цэсийн тойрог аажмаар эргэлддэг — хулгана хүргэхэд түр зогсдог. */
+.orbital-orbit {
+  position: absolute;
+  inset: 0;
+  animation: orbital-spin 40s linear infinite;
+}
+
 .orbital-ring {
   position: absolute;
   inset: 12%;
   border: 2px dashed #c9b8ec;
   border-radius: 50%;
-  animation: orbital-spin 90s linear infinite;
 }
 
 @keyframes orbital-spin {
@@ -384,8 +390,36 @@ main {
   }
 }
 
+/* Зангилаа нь тойргийн хамт эргэхдээ өөрөө эсрэг эргэж, босоо хэвээрээ байдаг. */
+@keyframes orbital-spin-rev {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes orbital-hub-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+
+.orbital:hover .orbital-orbit,
+.orbital:hover .orbital-node,
+.orbital:hover .orbital-hub {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .orbital-ring {
+  .orbital-orbit,
+  .orbital-node,
+  .orbital-hub {
     animation: none;
   }
 }
@@ -405,6 +439,7 @@ main {
   justify-content: center;
   box-shadow: 0 8px 24px rgba(246, 196, 83, 0.45);
   z-index: 1;
+  animation: orbital-hub-pulse 3s ease-in-out infinite;
 }
 
 .orbital-mascot {
@@ -430,10 +465,12 @@ main {
   transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
   z-index: 2;
   padding: 0;
+  animation: orbital-spin-rev 40s linear infinite;
 }
 
 .orbital-node:hover {
-  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--lavender);
+  border-color: var(--purple-deep);
 }
 
 .orbital-node-label {
