@@ -151,8 +151,9 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <p>© Сэтгэлийн Одод — Сэтгэл зүйн тестийн сан.</p>
-        <p>Нэг тест 6,500₮.</p>
+        <p className="footer-title">Сэтгэл зүй</p>
+        <p>Өөрийгөө таньж мэдэх туршлага</p>
+        <p>© 2026 Сэтгэл зүйн тестийн сан · Тестүүд нь оношилгоо биш</p>
       </footer>
     </div>
   );
