@@ -273,11 +273,11 @@ main {
 
 /* ---------- Hero ---------- */
 .hero {
-  background-image: radial-gradient(560px 300px at 18% 30%, rgba(246, 196, 83, 0.4), transparent 65%),
-    radial-gradient(480px 300px at 85% 75%, rgba(255, 126, 182, 0.28), transparent 65%),
-    var(--hex-pattern),
-    linear-gradient(135deg, #f3ecfd 0%, #e9ddf9 55%, #dccdf5 100%);
-  color: var(--purple-deep);
+  background-image: linear-gradient(180deg, rgba(26, 12, 44, 0.62) 0%, rgba(26, 12, 44, 0.45) 45%, rgba(26, 12, 44, 0.68) 100%),
+    url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  color: #fff;
   border-radius: 0 0 32px 32px;
   overflow: hidden;
   margin: -24px 0 0;
@@ -305,15 +305,16 @@ main {
   font-size: 2.4rem;
   line-height: 1.15;
   margin: 8px 0 4px;
-  color: var(--purple-deep);
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75), 0 6px 16px rgba(59, 31, 110, 0.18);
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.88);
   margin: 0 0 16px;
   max-width: 560px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .hero-cta {
@@ -1187,7 +1188,7 @@ td .actions {
   font-weight: 700;
   color: var(--purple-deep);
   border: 1.5px solid rgba(246, 196, 83, 0.8);
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   padding: 6px 14px;
 }
