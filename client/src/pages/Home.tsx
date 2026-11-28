@@ -43,23 +43,25 @@ export default function Home({ tests, user, onStart, onAuth, onResults, onAdmin 
         <div className="container hero-inner">
           <div className="hero-art">
             <div className="orbital" role="navigation" aria-label="Цэс">
-              <div className="orbital-ring" aria-hidden="true" />
+              <div className="orbital-orbit">
+                <div className="orbital-ring" aria-hidden="true" />
+                {menuItems.map((item, i) => (
+                  <button
+                    key={item.label}
+                    type="button"
+                    className="orbital-node"
+                    style={menuPos(i, menuItems.length)}
+                    onClick={item.onClick}
+                    aria-label={item.label}
+                  >
+                    <span aria-hidden="true">{item.icon}</span>
+                    <span className="orbital-node-label">{item.label}</span>
+                  </button>
+                ))}
+              </div>
               <div className="orbital-hub" aria-hidden="true">
                 <Mascot className="orbital-mascot" />
               </div>
-              {menuItems.map((item, i) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  className="orbital-node"
-                  style={menuPos(i, menuItems.length)}
-                  onClick={item.onClick}
-                  aria-label={item.label}
-                >
-                  <span aria-hidden="true">{item.icon}</span>
-                  <span className="orbital-node-label">{item.label}</span>
-                </button>
-              ))}
             </div>
           </div>
           <div className="hero-text">
@@ -70,9 +72,7 @@ export default function Home({ tests, user, onStart, onAuth, onResults, onAdmin 
               хэлээр, энгийнээр.
             </p>
             <div className="hero-points">
-              <span className="hero-point">Үр дүн шууд</span>
               <span className="hero-point">Нэг тест 6,500₮</span>
-              <span className="hero-point">Монгол хэлээр</span>
             </div>
             <div className="hero-cta">
               <a className="btn btn-primary" href="#tests">
@@ -84,7 +84,7 @@ export default function Home({ tests, user, onStart, onAuth, onResults, onAdmin 
                 </button>
               )}
             </div>
-            <p className="hero-stats">Нийт {visible.length} тест · Нэг тест 6,500₮</p>
+            <p className="hero-stats">Нийт {visible.length} тест</p>
           </div>
         </div>
       </section>
