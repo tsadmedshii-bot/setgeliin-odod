@@ -1,65 +1,65 @@
-// Хөөрхөн алтан од — ягаан зүрх тэвэрсэн kawaii дүрслэл (оригинал inline SVG).
+// Хөвсгөр бөөрөнхий үүл — тайвшрал өгдөг хөөрхөн дүрслэл (оригинал inline SVG).
 export default function Mascot({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 200 200" className={className} role="img" aria-label="Зүрх тэвэрсэн алтан од" fill="none">
+    <svg viewBox="0 0 200 200" className={className} role="img" aria-label="Хөвсгөр бөөрөнхий үүл" fill="none">
       <defs>
-        <radialGradient id="star-glow" cx="50%" cy="45%" r="60%">
-          <stop offset="0%" stopColor="#ffe9a8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#ffe9a8" stopOpacity="0" />
+        <radialGradient id="cloud-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="star-gold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffe08a" />
-          <stop offset="55%" stopColor="#f6c453" />
-          <stop offset="100%" stopColor="#e0a52e" />
+        <linearGradient id="cloud-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="55%" stopColor="#f6f0fe" />
+          <stop offset="100%" stopColor="#e2d4fa" />
         </linearGradient>
-        <linearGradient id="heart-pink" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ff9ec4" />
-          <stop offset="100%" stopColor="#ff5e9c" />
-        </linearGradient>
+        <clipPath id="cloud-clip">
+          <circle cx="62" cy="108" r="30" />
+          <circle cx="100" cy="86" r="38" />
+          <circle cx="140" cy="106" r="30" />
+          <ellipse cx="100" cy="130" rx="63" ry="30" />
+        </clipPath>
       </defs>
 
-      <circle cx="100" cy="98" r="88" fill="url(#star-glow)" />
+      <circle cx="100" cy="100" r="88" fill="url(#cloud-glow)" />
 
-      {/* Таван хошуут од */}
-      <path
-        d="M100 22 L118 74 L173 76 L129 108 L145 162 L100 130 L55 162 L71 108 L27 76 L82 74 Z"
-        fill="url(#star-gold)"
-        stroke="#c98f1b"
-        strokeWidth="3"
-        strokeLinejoin="round"
-      />
+      {/* Хөвсгөр үүлний бие + нүүр — бага зэрэг томруулсан */}
+      <g transform="translate(100 106) scale(1.12) translate(-100 -106)">
+        <g fill="url(#cloud-body)">
+          <circle cx="62" cy="108" r="30" />
+          <circle cx="100" cy="86" r="38" />
+          <circle cx="140" cy="106" r="30" />
+          <ellipse cx="100" cy="130" rx="63" ry="30" />
+        </g>
 
-      {/* Нүд — жаргалтай хаалттай нүд */}
-      <path d="M76 92 Q83 84 90 92" stroke="#5b3a00" strokeWidth="3.5" strokeLinecap="round" />
-      <path d="M110 92 Q117 84 124 92" stroke="#5b3a00" strokeWidth="3.5" strokeLinecap="round" />
+        {/* Сүүдэр + гэрэл (үүлний дотор) */}
+        <g clipPath="url(#cloud-clip)">
+          <ellipse cx="100" cy="156" rx="64" ry="20" fill="#cbb2f2" opacity="0.45" />
+          <ellipse cx="76" cy="80" rx="34" ry="16" fill="#ffffff" opacity="0.9" />
+        </g>
 
-      {/* Инээмсэглэл */}
-      <path d="M90 106 Q100 114 110 106" stroke="#5b3a00" strokeWidth="3.5" strokeLinecap="round" />
+        {/* Нойрмог жаргалтай нүд */}
+        <path d="M74 112 Q82 104 90 112" stroke="#6b4fa3" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M110 112 Q118 104 126 112" stroke="#6b4fa3" strokeWidth="3.5" strokeLinecap="round" />
 
-      {/* Хацар */}
-      <circle cx="70" cy="104" r="6" fill="#ff9ec4" opacity="0.75" />
-      <circle cx="130" cy="104" r="6" fill="#ff9ec4" opacity="0.75" />
+        {/* Инээмсэглэл */}
+        <path d="M92 126 Q100 133 108 126" stroke="#6b4fa3" strokeWidth="3.5" strokeLinecap="round" />
 
-      {/* Тэвэрсэн ягаан зүрх */}
-      <path
-        d="M100 168 C 84 156, 68 144, 68 130 C 68 120, 76 114, 84 114 C 92 114, 97 119, 100 124 C 103 119, 108 114, 116 114 C 124 114, 132 120, 132 130 C 132 144, 116 156, 100 168 Z"
-        fill="url(#heart-pink)"
-        stroke="#d63d7e"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
-      />
-      <path d="M78 128 Q82 122 88 122" stroke="#ffd3e3" strokeWidth="3" strokeLinecap="round" />
+        {/* Хацар */}
+        <circle cx="68" cy="124" r="6" fill="#ffb3d1" opacity="0.8" />
+        <circle cx="132" cy="124" r="6" fill="#ffb3d1" opacity="0.8" />
 
-      {/* Гар — зүрхийг тэвэрч байгаа мэт */}
-      <path d="M62 138 Q74 148 86 150" stroke="#c98f1b" strokeWidth="4" strokeLinecap="round" />
-      <path d="M138 138 Q126 148 114 150" stroke="#c98f1b" strokeWidth="4" strokeLinecap="round" />
+        {/* Үүлний доорх зөөлөн сүүдэр */}
+        <ellipse cx="100" cy="168" rx="52" ry="8" fill="#3b1f6e" opacity="0.12" />
+      </g>
 
       {/* Гялалзсан одод */}
+      <g fill="#f6c453">
+        <path d="M164 40 L166 46 L172 48 L166 50 L164 56 L162 50 L156 48 L162 46 Z" />
+        <path d="M34 58 L35.5 62.5 L40 64 L35.5 65.5 L34 70 L32.5 65.5 L28 64 L32.5 62.5 Z" />
+      </g>
       <g fill="#ffffff">
-        <path d="M160 34 L162 40 L168 42 L162 44 L160 50 L158 44 L152 42 L158 40 Z" />
-        <path d="M36 52 L37.5 56.5 L42 58 L37.5 59.5 L36 64 L34.5 59.5 L30 58 L34.5 56.5 Z" />
-        <circle cx="176" cy="86" r="2.5" />
-        <circle cx="26" cy="110" r="2.5" />
+        <circle cx="178" cy="92" r="2.5" />
+        <circle cx="24" cy="116" r="2.5" />
       </g>
     </svg>
   );
