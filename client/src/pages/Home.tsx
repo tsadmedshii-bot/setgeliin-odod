@@ -40,6 +40,12 @@ export default function Home({ tests, user, onStart, onAuth, onResults, onAdmin 
   return (
     <div>
       <section className="hero">
+        <span className="sparkle s1" aria-hidden="true">✦</span>
+        <span className="sparkle s2" aria-hidden="true">✦</span>
+        <span className="sparkle s3" aria-hidden="true">✦</span>
+        <span className="sparkle s4" aria-hidden="true">✦</span>
+        <span className="sparkle s5" aria-hidden="true">✦</span>
+        <span className="sparkle s6" aria-hidden="true">✦</span>
         <div className="container hero-inner">
           <div className="hero-art">
             <div className="orbital" role="navigation" aria-label="Цэс">
