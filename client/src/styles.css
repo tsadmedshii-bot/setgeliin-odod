@@ -1038,6 +1038,12 @@ td .actions {
   margin: 4px 0;
 }
 
+.footer-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--purple-deep);
+}
+
 .page-head {
   margin-bottom: 20px;
 }
